@@ -18,7 +18,7 @@
   <body>
 
     <div id="info">
-                  <!-- <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - draggable cubes -->
+      <!-- <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - draggable cubes -->
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.1/seedrandom.min.js""></script>
@@ -79,16 +79,16 @@
         var smoothMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true, vertexColors: THREE.VertexColors } );
         var texturedMaterial = new THREE.MeshBasicMaterial( { map: texture} );
 
-        var geometry = new THREE.BoxBufferGeometry( 40, 40, 40 );
-        var sphere = new THREE.SphereGeometry(40, 10, 10);
+        var geometry = new THREE.BoxBufferGeometry( 80, 80, 80 );
+        var sphere = new THREE.SphereGeometry(80, 20, 20);
 
-                                for ( var i = 0; i < 10; i ++ ) {
+        for ( var i = 0; i < 3; i ++ ) {
 
           var object = new THREE.Mesh( sphere, texturedMaterial );
 
-          object.position.x = Math.random() * 1000 - 500;
-          object.position.y = Math.random() * 600 - 300;
-          object.position.z = Math.random() * 800 - 400;
+          object.position.x = Math.random() * 300 - 150;
+          object.position.y = Math.random() * 300 - 150;
+          object.position.z = Math.random() * 300 - 150;
 
           //object.scale.x = Math.random() * 2 + 1;
           //object.scale.y = Math.random() * 2 + 1;
@@ -101,16 +101,16 @@
 
           objects.push( object );
 
-                                }
+        }
 
-        for ( var i = 0; i < 10; i ++ ) {
+        for ( var i = 0; i < 3; i ++ ) {
 
           //var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
           var object = new THREE.Mesh( geometry, texturedMaterial );
 
-          object.position.x = Math.random() * 1000 - 500;
-          object.position.y = Math.random() * 600 - 300;
-          object.position.z = Math.random() * 800 - 400;
+          object.position.x = Math.random() * 300 - 150;
+          object.position.y = Math.random() * 300 - 150;
+          object.position.z = Math.random() * 300 - 150;
 
           object.rotation.x = Math.random() * 2 * Math.PI;
           object.rotation.y = Math.random() * 2 * Math.PI;
