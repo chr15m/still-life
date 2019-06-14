@@ -4,7 +4,7 @@
 		<title>three.js webgl - draggable cubes</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
+		<link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
 		<style>
 			body {
 				background-color: #f0f0f0;
@@ -18,7 +18,7 @@
 	<body>
 
 		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - draggable cubes
+                  <!-- <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> webgl - draggable cubes -->
 		</div>
 
 		<script src="https://threejs.org/build/three.js"></script>
@@ -62,11 +62,41 @@
 
 				scene.add( light );
 
+				var texture = new THREE.TextureLoader().load( "grid.jpg" );
+
+				var wireframeMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true, opacity: 0.15, transparent: true } );
+				var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } );
+				var smoothMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true, vertexColors: THREE.VertexColors } );
+				var texturedMaterial = new THREE.MeshBasicMaterial( { map: texture} );
+
 				var geometry = new THREE.BoxBufferGeometry( 40, 40, 40 );
+				var sphere = new THREE.SphereGeometry(40, 10, 10);
 
-				for ( var i = 0; i < 200; i ++ ) {
+                                for ( var i = 0; i < 10; i ++ ) {
 
-					var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+					var object = new THREE.Mesh( sphere, texturedMaterial );
+
+					object.position.x = Math.random() * 1000 - 500;
+					object.position.y = Math.random() * 600 - 300;
+					object.position.z = Math.random() * 800 - 400;
+
+					//object.scale.x = Math.random() * 2 + 1;
+					//object.scale.y = Math.random() * 2 + 1;
+					//object.scale.z = Math.random() * 2 + 1;
+
+					object.castShadow = true;
+					object.receiveShadow = true;
+
+					scene.add( object );
+
+					objects.push( object );
+
+                                }
+
+				for ( var i = 0; i < 10; i ++ ) {
+
+					//var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+					var object = new THREE.Mesh( geometry, texturedMaterial );
 
 					object.position.x = Math.random() * 1000 - 500;
 					object.position.y = Math.random() * 600 - 300;
@@ -76,9 +106,9 @@
 					object.rotation.y = Math.random() * 2 * Math.PI;
 					object.rotation.z = Math.random() * 2 * Math.PI;
 
-					object.scale.x = Math.random() * 2 + 1;
-					object.scale.y = Math.random() * 2 + 1;
-					object.scale.z = Math.random() * 2 + 1;
+					//object.scale.x = Math.random() * 2 + 1;
+					//object.scale.y = Math.random() * 2 + 1;
+					//object.scale.z = Math.random() * 2 + 1;
 
 					object.castShadow = true;
 					object.receiveShadow = true;
@@ -99,7 +129,7 @@
 				container.appendChild( renderer.domElement );
 
 				controls = new THREE.TrackballControls( camera, renderer.domElement );
-				controls.rotateSpeed = 1.0;
+				controls.rotateSpeed = 5.0;
 				controls.zoomSpeed = 1.2;
 				controls.panSpeed = 0.8;
 				controls.noZoom = false;
