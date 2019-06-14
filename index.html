@@ -72,19 +72,17 @@
 
         scene.add( light );
 
-        var texture = new THREE.TextureLoader().load( "grid.jpg" );
+        var texture1 = new THREE.TextureLoader().load( "grid.jpg" );
+        texture1.repeat.set(0.5, 0.5);
 
-        var wireframeMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true, opacity: 0.15, transparent: true } );
-        var material = new THREE.MeshBasicMaterial( { color: 0xffffff, wireframe: true } );
-        var smoothMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true, vertexColors: THREE.VertexColors } );
-        var texturedMaterial = new THREE.MeshBasicMaterial( { map: texture} );
+        var texture2 = new THREE.TextureLoader().load( "grid.jpg" );
 
         var geometry = new THREE.BoxBufferGeometry( 80, 80, 80 );
-        var sphere = new THREE.SphereGeometry(80, 20, 20);
+        var sphere = new THREE.SphereGeometry(40, 20, 20);
 
         for ( var i = 0; i < 3; i ++ ) {
 
-          var object = new THREE.Mesh( sphere, texturedMaterial );
+          var object = new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { map: texture2} ) );
 
           object.position.x = Math.random() * 300 - 150;
           object.position.y = Math.random() * 300 - 150;
@@ -105,8 +103,7 @@
 
         for ( var i = 0; i < 3; i ++ ) {
 
-          //var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
-          var object = new THREE.Mesh( geometry, texturedMaterial );
+          var object = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { map: texture1} ) );
 
           object.position.x = Math.random() * 300 - 150;
           object.position.y = Math.random() * 300 - 150;
