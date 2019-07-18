@@ -22,6 +22,6 @@ for obj in bpy.data.objects:
 
     print(fPath)
 
-    bpy.ops.export_mesh.stl(filepath=fPath, use_selection=True)
+    bpy.ops.export_mesh.stl(filepath=fPath, use_selection=True, global_scale=100, axis_forward="Z", axis_up="Y")
 
 bpy.ops.wm.quit_blender()

@@ -8,10 +8,8 @@
   ; re-create scene
   (let [geo (THREE.BoxBufferGeometry. 200 200 200)
         mat (THREE.MeshLambertMaterial. {:color 0xdddddd})
-        o (THREE.Mesh. (part :hull 2) mat)]
-    (set! o.scale.x 50)
-    (set! o.scale.y 50)
-    (set! o.scale.z 50)
+        lines (THREE.LineBasicMaterial. {:color 0x333333 :linewidth 3})
+        o (THREE.Mesh. (part :hull 2) lines)]
     (add o)))
 
 (defn ensure-models-loaded [cb]
